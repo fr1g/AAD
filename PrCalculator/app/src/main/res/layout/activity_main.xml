@@ -5,17 +5,341 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="50dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_margin="10dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="104dp"
+        android:backgroundTint="#334455"
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <Button
+            android:id="@+id/buttonClear"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="AC"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonUndo"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonSqrt"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="Sqrt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonSq"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="Sq"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--    separator    -->
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#fecaca"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="7"
+            android:textColor="#3e3a3a"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#fecaca"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="8"
+            android:textColor="#3e3a3a"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#fecaca"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="9"
+            android:textColor="#3e3a3a"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonPlus"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="@string/plus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--    separator    -->
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#fecaca"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="4"
+            android:textColor="#3e3a3a"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#fecaca"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="5"
+            android:textColor="#3e3a3a"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#fecaca"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="6"
+            android:textColor="#3e3a3a"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonMinus"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="@string/minus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--    separator    -->
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#fecaca"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="1"
+            android:textColor="#3e3a3a"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#fecaca"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="2"
+            android:textColor="#3e3a3a"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#fecaca"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="3"
+            android:textColor="#3e3a3a"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonTimes"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="@string/times"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--    separator    -->
+
+        <Button
+            android:id="@+id/buttonDot"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#fecaca"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="@string/dot"
+            android:textColor="#3e3a3a"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button0"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#fecaca"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="@string/zero"
+            android:textColor="#3e3a3a"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonEq"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:backgroundTint="#3e3a3a"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="@string/equals"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonDiv"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="@dimen/buttonGap"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:text="@string/divide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </GridLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="20dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:elevation="@dimen/cardview_default_elevation"
+        app:layout_constraintBottom_toTopOf="@id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="371dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:alpha="0.7"
+                android:text="TextView"
+                android:textAlignment="viewEnd"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/textView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="32dp"
+                android:text="Lorem ipsulm dolor sit amet. cuando me vous caron tou ca le fae"
+                android:textAlignment="viewEnd"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
