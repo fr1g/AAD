@@ -35,6 +35,7 @@
             android:backgroundTint="@android:color/holo_red_light"
             android:elevation="@dimen/cardview_default_elevation"
             android:text="AC"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,6 +48,7 @@
             android:backgroundTint="@android:color/holo_red_light"
             android:elevation="@dimen/cardview_default_elevation"
             android:text="C"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,6 +60,7 @@
             android:layout_margin="@dimen/buttonGap"
             android:elevation="@dimen/cardview_default_elevation"
             android:text="Sqrt"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,6 +72,7 @@
             android:layout_margin="@dimen/buttonGap"
             android:elevation="@dimen/cardview_default_elevation"
             android:text="Sq"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,6 +88,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:text="7"
             android:textColor="#3e3a3a"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -97,6 +102,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:text="8"
             android:textColor="#3e3a3a"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -110,6 +116,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:text="9"
             android:textColor="#3e3a3a"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -121,6 +128,7 @@
             android:layout_margin="@dimen/buttonGap"
             android:elevation="@dimen/cardview_default_elevation"
             android:text="@string/plus"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -136,6 +144,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:text="4"
             android:textColor="#3e3a3a"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -149,6 +158,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:text="5"
             android:textColor="#3e3a3a"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -162,6 +172,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:text="6"
             android:textColor="#3e3a3a"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -173,6 +184,7 @@
             android:layout_margin="@dimen/buttonGap"
             android:elevation="@dimen/cardview_default_elevation"
             android:text="@string/minus"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -188,6 +200,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:text="1"
             android:textColor="#3e3a3a"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -201,6 +214,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:text="2"
             android:textColor="#3e3a3a"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -214,6 +228,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:text="3"
             android:textColor="#3e3a3a"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -225,6 +240,7 @@
             android:layout_margin="@dimen/buttonGap"
             android:elevation="@dimen/cardview_default_elevation"
             android:text="@string/times"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -240,6 +256,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:text="@string/dot"
             android:textColor="#3e3a3a"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -253,6 +270,7 @@
             android:elevation="@dimen/cardview_default_elevation"
             android:text="@string/zero"
             android:textColor="#3e3a3a"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -265,6 +283,7 @@
             android:backgroundTint="#3e3a3a"
             android:elevation="@dimen/cardview_default_elevation"
             android:text="@string/equals"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -276,6 +295,7 @@
             android:layout_margin="@dimen/buttonGap"
             android:elevation="@dimen/cardview_default_elevation"
             android:text="@string/divide"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -288,7 +308,7 @@
         android:layout_height="1dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="18dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -298,6 +318,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:elevation="@dimen/cardview_default_elevation"
+        android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@id/divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -306,37 +327,33 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="1dp"
+            android:gravity="bottom"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="371dp"
-                android:layout_height="35dp"
+                android:id="@+id/last"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
                 android:alpha="0.7"
                 android:text="TextView"
                 android:textAlignment="viewEnd"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/textView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/curr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="20dp"
                 android:text="Lorem ipsulm dolor sit amet. cuando me vous caron tou ca le fae"
                 android:textAlignment="viewEnd"
                 android:textSize="34sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/divider"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>
