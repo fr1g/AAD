@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
         }
-        var cleanned = (current + (isCalcOp ? " " + input + " " : input) ).replaceAll(" {2}", "").trim();
-        setCurrent(cleanned);
+        var cleaned = (current + (isCalcOp ? " " + input + " " : input) ).replaceAll(" {2}", "").trim();
+        setCurrent(cleaned);
     }
 
     void setClickProcess(Button btn, Consumer<View> onclick){
