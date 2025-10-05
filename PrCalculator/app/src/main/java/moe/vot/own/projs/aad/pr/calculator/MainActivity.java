@@ -1,11 +1,15 @@
 package moe.vot.own.projs.aad.pr.calculator;
 
+import static android.widget.Toast.LENGTH_LONG;
+import static android.widget.Toast.LENGTH_SHORT;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,9 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
 //    GeneralCalculation calc;
 
-    Button num0, num1, num2, num3, num4, num5, num6, num7, num8, num9,
-            opAc, opC, opSqrt, opSq, opPlus, opMin, opDiv, opTime, opEqual,
-            charDot;
+    Button[] nums = new Button[10];
+    Button opAc, opC, opSqrt, opSq, opPlus, opMin, opDiv, opTime, opEqual, charDot;
 
     TextView lastFormulae, currentFormulae;
     String last, current, recent; // recent -> last -> current
@@ -81,12 +84,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void appendToCurrent(String input, boolean isCalcOp){
-//        if(isCalcOp){ // if result contains dot set dotted true
-//            dotted = false;
-//        }
+    void appendToCurrent(String input, boolean isCalcOp){ // todo after clicked dot then input anything will cause empty-up
+
         if(init){
-            if(!(isCalcOp && tryParseDouble(current)))
+            if(!(isCalcOp && tryParseDouble(getCurrentPart()))) // current? currentPart? // not operator, not number
                 current = "";
 
             init = false;
@@ -95,46 +96,35 @@ public class MainActivity extends AppCompatActivity {
 
         if(input.equals(".")){
             if(getCurrentPart().contains(".")) return;
-            if(current.endsWith(" ") || current.equals(EMPTY) || current.isEmpty() || current.isBlank()) return;
+            if(!tryParseDouble(getCurrentPart())) return;
         }
         var cleaned = (current + (isCalcOp ? " " + input + " " : input) ).replaceAll(" {2}", "");
         setCurrent(cleaned);
     }
 
     void setClickProcess(Button btn, Consumer<View> onclick){
-        btn.setOnClickListener((View.OnClickListener) new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(!canUse) return;
-                onclick.accept(v);
-            }
+        btn.setOnClickListener((View.OnClickListener) v -> {
+            if(!canUse) return;
+            onclick.accept(v);
         });
     }
-
-//    void deInit(String with){
-//        if(current.equals(EMPTY)){
-//
-//        }
-//        else{
-//
-//        }
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        num0 = findViewById(R.id.button0);
-        num1 = findViewById(R.id.button1);
-        num2 = findViewById(R.id.button2);
-        num3 = findViewById(R.id.button3);
-        num4 = findViewById(R.id.button4);
-        num5 = findViewById(R.id.button5);
-        num6 = findViewById(R.id.button6);
-        num7 = findViewById(R.id.button7);
-        num8 = findViewById(R.id.button8);
-        num9 = findViewById(R.id.button9);
+//        nums[0] = findViewById(""); // worse than javascript
+        nums[0] = findViewById(R.id.button0);
+        nums[1] = findViewById(R.id.button1);
+        nums[2] = findViewById(R.id.button2);
+        nums[3] = findViewById(R.id.button3);
+        nums[4] = findViewById(R.id.button4);
+        nums[5] = findViewById(R.id.button5);
+        nums[6] = findViewById(R.id.button6);
+        nums[7] = findViewById(R.id.button7);
+        nums[8] = findViewById(R.id.button8);
+        nums[9] = findViewById(R.id.button9);
         opAc = findViewById(R.id.buttonClear);
         opC = findViewById(R.id.buttonUndo);
         opPlus = findViewById(R.id.buttonPlus);
@@ -149,40 +139,17 @@ public class MainActivity extends AppCompatActivity {
         currentFormulae = findViewById(R.id.curr);
         lastFormulae = findViewById(R.id.last);
 
-//        calc = new GeneralCalculation();
-
-        setClickProcess(num0, (v) -> {
-            appendToCurrent("0", false);
-        });
-        setClickProcess(num1, (v) -> {
-            appendToCurrent("1", false);
-        });
-        setClickProcess(num2, (v) -> {
-            appendToCurrent("2", false);
-        });
-        setClickProcess(num3, (v) -> {
-            appendToCurrent("3", false);
-        });
-        setClickProcess(num4, (v) -> {
-            appendToCurrent("4", false);
-        });
-        setClickProcess(num5, (v) -> {
-            appendToCurrent("5", false);
-        });
-        setClickProcess(num6, (v) -> {
-            appendToCurrent("6", false);
-        });
-        setClickProcess(num7, (v) -> {
-            appendToCurrent("7", false);
-        });
-        setClickProcess(num8, (v) -> {
-            appendToCurrent("8", false);
-        });
-        setClickProcess(num9, (v) -> {
-            appendToCurrent("9", false);
-        });
+        int index = -1;
+        for(var sub : nums){
+            int finalIndex = ++index; // idiot java.
+            setClickProcess(sub, (v) -> {
+                appendToCurrent(finalIndex + "", false);
+            });
+        }
 
         setClickProcess(charDot, (v) -> {
+            Toast.makeText(getApplicationContext(), "init: " + init + ", curr: " + current, LENGTH_SHORT).show();
+            if(init && tryParseDouble(getCurrentPart())) init = false;
             appendToCurrent(".", false);
         });
 
@@ -199,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
             appendToCurrent(DIVIDE, true);
         });
 
-
         setClickProcess(opAc, (v) -> {
             setAll(EMPTY);
             last = "-";
@@ -208,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setClickProcess(opC, (view) -> {
+            if(current.equals("-")) return;
             undo();
             applyView();
             init = false;
@@ -216,14 +183,15 @@ public class MainActivity extends AppCompatActivity {
         setClickProcess(opEqual, (v) -> {
             next();
             try(GeneralCalculation calc = new GeneralCalculation()){
-                current = calc.calc(current.replaceAll(TIMES, "*")).replaceAll(DIVIDE, "/");
-
+                current = calc.calc(current.replaceAll(TIMES, "*").replaceAll(DIVIDE, "/"));
+                Toast.makeText(getApplicationContext(), "last: " + last + ", curr: " + current, LENGTH_SHORT).show();
             }catch (Exception ex){
                 current = Objects.requireNonNull(ex.getMessage()).split("..")[0];
             }
 
             applyView();
             init = true;
+            Toast.makeText(getApplicationContext(), "init: " + init + ", curr: " + current, LENGTH_SHORT).show();
         });
 
         setClickProcess(opSq, (v) -> {
