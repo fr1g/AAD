@@ -189,6 +189,8 @@ public class MainActivity extends AppCompatActivity {
                 current = Objects.requireNonNull(ex.getMessage()).split("..")[0];
             }
 
+            if(!tryParseDouble(current)) setErr(); // not tested
+
             applyView();
             init = true;
             Toast.makeText(getApplicationContext(), "init: " + init + ", curr: " + current, LENGTH_SHORT).show();
