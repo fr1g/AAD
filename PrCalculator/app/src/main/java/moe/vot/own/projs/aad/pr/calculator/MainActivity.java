@@ -25,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
 //    GeneralCalculation calc;
 
     Button[] nums = new Button[10];
-    Button opAc, opC, opSqrt, opSq, opPlus, opMin, opDiv, opTime, opEqual, charDot;
+    Button opAc, opC, opSqrt, opSq, opPlus, opMin, opDiv, opTime, opEqual, charDot, Mc, MrOp;
+
+    double savedMVal = 0.0d;
 
     TextView lastFormulae, currentFormulae;
     String last, current, recent; // recent -> last -> current
@@ -136,8 +138,13 @@ public class MainActivity extends AppCompatActivity {
         opSqrt = findViewById(R.id.buttonSqrt);
         charDot = findViewById(R.id.buttonDot);
 
+        MrOp = findViewById(R.id.buttonM);
+        Mc = findViewById(R.id.buttonMC);
+
         currentFormulae = findViewById(R.id.curr);
         lastFormulae = findViewById(R.id.last);
+
+
 
         int index = -1;
         for(var sub : nums){
@@ -214,6 +221,26 @@ public class MainActivity extends AppCompatActivity {
                 current = Math.sqrt(Double.parseDouble(current)) + "";
             applyView();
             init = true;
+        });
+
+        setClickProcess(MrOp, (v) -> { // saving into M
+
+//            if() return;
+            if(init && tryParseDouble(getCurrentPart())){
+                savedMVal = Double.parseDouble(current); // ?
+                if(savedMVal == 0.0d) return;
+                MrOp.setText("MR");
+                return;
+            }
+            if(savedMVal != 0.0d && !tryParseDouble(getCurrentPart()) && !current.isEmpty() && !current.isBlank()){ // OP ending, not blanc, then insert M value inside.
+                appendToCurrent(savedMVal + "", false);
+            }
+
+        });
+
+        setClickProcess(Mc, (v) -> { // clear M
+            savedMVal = 0.0d;
+            MrOp.setText("MP");
         });
 
     }
