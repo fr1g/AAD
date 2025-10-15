@@ -1,33 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="33dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="33dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="26sp" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+        <Button
+            android:id="@+id/FirstBtn"
+            android:layout_width="315dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="233dp"
+            android:layout_marginEnd="33dp"
+            android:layout_weight="1"
+            android:text="Go to Info Page" />
 
-    <include layout="@layout/content_main" />
+        <Button
+            android:id="@+id/MakeItBig"
+            android:layout_width="315dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/FirstBtn"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="33dp"
+            android:layout_weight="1"
+            android:backgroundTint="#CF7995C5"
+            android:text="Make It Big" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <Button
+            android:id="@+id/Home"
+            android:layout_width="315dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/MakeItBig"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="33dp"
+            android:layout_weight="1"
+            android:backgroundTint="#CF7995C5"
+            android:text="Edit" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

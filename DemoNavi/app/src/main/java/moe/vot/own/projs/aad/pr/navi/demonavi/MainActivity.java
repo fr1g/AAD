@@ -1,77 +1,57 @@
 package moe.vot.own.projs.aad.pr.navi.demonavi;
 
-import android.os.Bundle;
+import static moe.vot.own.projs.aad.pr.navi.demonavi.Binder.setClickProcess;
 
-import com.google.android.material.snackbar.Snackbar;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
+public class MainActivity extends AppCompatActivity{// implements View.OnClickListener {
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+    boolean isGotContent = false;
 
-import moe.vot.own.projs.aad.pr.navi.demonavi.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
-
-public class MainActivity extends AppCompatActivity {
-
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
+    void proccDisplayMsg(){
+        String msg = (String)(getIntent().getSerializableExtra("msg"));
+        isGotContent = !(msg == null || msg.isBlank());
+        ((TextView)findViewById(R.id.textView)).setText(!isGotContent ? "NO-MSG" : msg);
+        if(isGotContent) findViewById(R.id.Home).setVisibility(View.VISIBLE);
+        else findViewById(R.id.Home).setVisibility(View.INVISIBLE);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        proccDisplayMsg();
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setClickProcess((Button) findViewById(R.id.FirstBtn), (view -> {
+            startActivity(new Intent(getApplicationContext(), InfoPage.class));
+        }));
 
-        setSupportActionBar(binding.toolbar);
+        setClickProcess((Button) findViewById(R.id.Home), (v) -> {
+            var i = new Intent(getApplicationContext(), InfoPage.class);
+            var val = ((TextView)findViewById(R.id.textView)).getText();
+            i.putExtra("msg", (val == null || val.equals("NO-MSG") ? "" : val.toString()));
+            startActivity(i);
+        });
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.fab)
-                        .setAction("Action", null).show();
-            }
+        setClickProcess((Button) findViewById(R.id.MakeItBig), (v) -> {
+            var i = new Intent(getApplicationContext(), LastView.class);
+            var val = ((TextView)findViewById(R.id.textView)).getText();
+            i.putExtra("msg", (val == null ? "*Nothing Actually*" : val.toString()));
+            startActivity(i);
         });
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    public void onNewIntent(Intent intent){
+        super.onNewIntent(intent);
+        setIntent(intent);
+        proccDisplayMsg();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
 }
