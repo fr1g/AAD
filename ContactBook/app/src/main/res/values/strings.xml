@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ContactBook</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="add">New</string>
+    <string name="read">Read</string>
+    <string name="clear">AC</string>
 </resources>
