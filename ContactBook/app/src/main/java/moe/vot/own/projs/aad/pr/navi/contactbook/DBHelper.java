@@ -7,12 +7,16 @@ import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String LOG_TAG = "myLogs";
-    public DBHelper(Context context) {
-        super(context, "myDB", null, 1);
+    String tableName, dbName;
+
+    public DBHelper(Context context, String tableName, String dbName) {
+        super(context, dbName, null, 1);
+        this.dbName = dbName;
+        this.tableName = tableName;
     }
     public void onCreate(SQLiteDatabase db) {
         Log.d(LOG_TAG, "--- onCreate database ---");
-        db.execSQL("create table mytable ("
+        db.execSQL("create table " + this.tableName + " ("
                 + "id integer primary key autoincrement,"
                 + "name text,"
                 + "email text" + ");");

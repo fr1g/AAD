@@ -3,18 +3,41 @@ package moe.vot.own.projs.aad.pr.navi.contactbook;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
-public class ContactDbContext {
+public class ContactDbContext implements AutoCloseable {
 
-    private SQLiteDatabase _db;
+    public SQLiteDatabase DB;
+    private DBHelper _h;
+    private ContentValues _cv;
 
-    public ContactDbContext(MainActivity.DBHelper dbHelper)
+    public ContactDbContext(DBHelper dbHelper){
+        _h = dbHelper;
+        DB = _h.getWritableDatabase();
+    }
+
+    public ContactDbContext Store(String key, String value){
+        if(_cv == null) _cv = new ContentValues();
+        _cv.put(key, value);
+        return this;
+    }
+
+    public long Keep(){
+        var value = DB.insert(_h.tableName, null, this._cv);
+        this._cv = null;
+        return value;
+    }
+
+    public int Reset(){
+        return DB.delete(_h.tableName, null, null);
+    }
 
     public ContactDbContext(String name, String email){
-        // создаем объект для данных
         ContentValues cv = new ContentValues();
-        // получаем данные из полей ввода
 
-        // подключаемся к БД
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+    }
+
+    @Override
+    public void close() throws Exception {
+        if(DB != null) DB.close(); // todo maybe cause problem?
+        if(_h != null) _h.close();
     }
 }
