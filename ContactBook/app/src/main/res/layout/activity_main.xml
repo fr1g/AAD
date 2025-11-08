@@ -78,7 +78,7 @@
 
         android:layout_marginTop="36dp"
         android:layout_marginEnd="20dp"
-        android:backgroundTint="#A9A9A9"
+        android:backgroundTint="#C9C9C9"
         android:text="@string/read"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
