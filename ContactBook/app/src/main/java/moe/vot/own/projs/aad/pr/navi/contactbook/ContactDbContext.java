@@ -26,8 +26,10 @@ public class ContactDbContext implements AutoCloseable {
         return value;
     }
 
-    public int Reset(){
-        return DB.delete(_h.tableName, null, null);
+    public int Reset() throws android.database.SQLException{
+        var res = DB.delete(_h.tableName, null, null);
+        DB.execSQL("UPDATE sqlite_sequence SET seq = 0 WHERE name = '" + _h.tableName + "'");
+        return res;
     }
 
     public ContactDbContext(String name, String email){

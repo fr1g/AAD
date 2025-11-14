@@ -18,8 +18,10 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d(LOG_TAG, "--- onCreate database ---");
         db.execSQL("create table " + this.tableName + " ("
                 + "id integer primary key autoincrement,"
-                + "name text,"
-                + "email text" + ");");
+                + "name text"
+                + ",email text"
+                + ",date text"
+                + ");"); // this can be extracted.
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { }
 }

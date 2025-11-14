@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fecaca"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:id="@+id/list_idField"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="3dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_idField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/value_idField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/list_nameField"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="3dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+
+        >
+
+        <TextView
+            android:id="@+id/title_nameField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/value_nameField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="default"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/list_emailField"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="3dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+
+        >
+
+        <TextView
+            android:id="@+id/title_emailField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/value_emailField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="xx@yy.z"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/list_dateField"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="3dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_dateField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Added At"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/value_dateField"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="da-t-e"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</LinearLayout>
