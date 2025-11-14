@@ -32,10 +32,7 @@ public class ContactDbContext implements AutoCloseable {
         return res;
     }
 
-    public ContactDbContext(String name, String email){
-        ContentValues cv = new ContentValues();
-
-    }
+    public ContactDbContext(String name, String email){ ContentValues cv = new ContentValues(); }
 
     @Override
     public void close() throws Exception {

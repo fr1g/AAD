@@ -9,9 +9,7 @@ public class Content {
     public Content(int id, String name, String email, String dateString){
         this.dateString = dateString;
         this.email = email;
-
         this.name = name;
         this.id = id;
     }
-
 }

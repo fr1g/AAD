@@ -25,12 +25,9 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     final String LOG_TAG = DBHelper.LOG_TAG;
-
     EditText nameField, emailField, etDate;
     DBHelper mDbHelper;
-
     Calendar calendar;
-
     String dateSelected;
     SimpleDateFormat dateFormat;
 
@@ -49,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d(LOG_TAG, "appl");
             recyclerView.setAdapter(new ContentListRenderAdapter(set));
         }
-
         Toast.makeText(this, "Total: " + set.size(), Toast.LENGTH_SHORT).show();
     }
 
@@ -67,16 +63,13 @@ public class MainActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
                 (view, selectedYear, selectedMonth, selectedDay) -> {
-
                     calendar.set(selectedYear, selectedMonth, selectedDay);
                     String selectedDate = dateFormat.format(calendar.getTime());
                     etDate.setText(selectedDate);
                     dateSelected = selectedDate;
-
                 },
                 year, month, day
         );
-
         datePickerDialog.show();
     }
 
@@ -94,9 +87,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         findViewById(R.id.recyclerView).setVisibility(RecyclerView.INVISIBLE);
-
         setCurrentDate();
-
         etDate.setOnClickListener(v -> showDatePicker()); // dont know before.
 
         Binder.setClickProcess((Button)findViewById(R.id.buttonAdd), (v) -> {
@@ -111,18 +102,13 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (Exception ex){ }
             findViewById(R.id.buttonRead).performClick();
-
-
         } );
 
         Binder.setClickProcess((Button) findViewById(R.id.buttonRead), (v) -> {
-
             Log.d(LOG_TAG, "--- Rows in mytable: ---");
-
             resultSet.clear();
             Cursor c = null;
             try(var context = new ContactDbContext(mDbHelper)){
-
                 c = context.DB.query(mDbHelper.tableName,
                         null,
                         null,
@@ -130,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
                         null,
                         null,
                         null);
-
                 if (c.moveToFirst()) {
                     int idColIndex = c.getColumnIndex("id");
                     int nameColIndex = c.getColumnIndex("name");
@@ -142,30 +127,22 @@ public class MainActivity extends AppCompatActivity {
                                         + c.getString(nameColIndex) + ", email = "
                                         + c.getString(emailColIndex) + ". at: " + c.getString(dateColIndex));
                     } while (c.moveToNext());
-
                 } else Log.d(LOG_TAG, "0 rows");
                 applyList(resultSet);
             } catch(Exception ex){ }
             finally {
                 if(c != null) c.close();
             }
-
         });
-
         Binder.setClickProcess((Button) findViewById(R.id.buttonClear), (v) -> {
             try(var context = new ContactDbContext(mDbHelper)){
                 Log.d(LOG_TAG, "--- Clear mytable: ---");
                 int clearCount = context.Reset();
                 Log.d(LOG_TAG, "deleted rows count = " + clearCount);
-            } catch(Exception ex) {
-
-            }
+            } catch(Exception ex) { }
             findViewById(R.id.buttonRead).performClick();
         });
-
         nameField = (EditText) findViewById(R.id.editTextName);
         emailField = (EditText) findViewById(R.id.editTextEmail);
     }
-
-
 }
