@@ -39,48 +39,35 @@ public class MainActivity extends AppCompatActivity {
     class DrawView extends View {
 
         Paint p;
-        RectF rf;
-
-        float[] p1, p2;
+        Rect r;
 
         public DrawView(Context context) {
             super(context);
             p = new Paint();
-            rf = new RectF(555, 111, 777, 333);
-            p1 = new float[] { 100, 50, 150, 100, 150, 200, 50, 100 };
-            p2 = new float[] {
-                    300, 200,  600, 200,  300, 300,
-                    600, 300,  400, 100,  400, 500,
-                    100, 500,  400
-            };
+            r = new Rect(100, 300, 300, 500);
         }
 
         @Override
         protected void onDraw(Canvas canvas){
-            canvas.drawARGB(a(95), 200, 180, 199);
+            canvas.drawARGB(a(95), 100, 180, 199);
             p.setColor(Color.parseColor("#fecaca"));
-            p.setStrokeWidth(5);
-            canvas.drawPoints(p1, p);
-            p.setColor(Color.parseColor("#FED7AA"));
-            canvas.drawLines(p2, p);
-            canvas.drawRoundRect(rf, 23, 23, p);
-            rf.offset(0 ,123);
-            canvas.drawOval(rf, p);
-            rf.offsetTo(888, 111);
-            rf.inset(0, -33);
-            canvas.drawArc(rf, 90, 270, true, p);
-            rf.offset(0, 123);
-            canvas.drawArc(rf, 90, 270, false, p);
-            p.setStrokeWidth(23);
-            canvas.drawLine(123, 234, 123, 456, p);
-            p.setColor(Color.parseColor("#DEA8A5"));
+            p.setStrokeWidth(10);
             p.setTextSize(33);
-            canvas.drawText("Moscow", 128, 500, p);
-            p.setTextAlign(Paint.Align.CENTER);
-            canvas.drawText("Vladimir", 240, 512, p);
-            p.setTextAlign(Paint.Align.RIGHT);
-            canvas.drawText("Novosibirsk", 550, 525, p);
 
+            canvas.drawText((
+                "W: " + getWidth() + "; H: " + getHeight() + "; // says, use getWidth instead of canvas.getWidth"
+            ), 10, 150, p);
+
+
+            p.setStyle(Paint.Style.FILL);
+            r.offset(123, 0);
+            canvas.drawRect(r, p);
+            p.setStyle(Paint.Style.STROKE);
+            r.offset(256, 0);
+            canvas.drawRect(r, p);
+            p.setStyle(Paint.Style.FILL_AND_STROKE);
+            r.offset(234, 0);
+            canvas.drawRect(r, p);
         }
 
     }
