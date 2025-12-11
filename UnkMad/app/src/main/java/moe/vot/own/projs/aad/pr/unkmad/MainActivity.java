@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Bundle;
@@ -34,73 +35,50 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    Path triangle(float[][] points){
+        // skip err hand.
+        var path = new Path();
+        path.moveTo(points[0][0], points[0][1]);
+        path.lineTo(points[1][0], points[1][1]);
+        path.lineTo(points[2][0], points[2][1]);
+        path.close();
+        return path;
+    }
 
 //    class DrawView extends SurfaceView implements SurfaceHolder.Callback {
     class DrawView extends View {
 
         Paint p;
+        Path t, tReversed, tMiddle, tFit;
+
         Rect r;
 
         public DrawView(Context context) {
             super(context);
             p = new Paint();
-            r = new Rect(100, 300, 300, 500);
+            t = triangle(new float[][]{ {500, 500}, {600, 500}, {399, 600} });
+            tReversed = triangle(new float[][]{ {500, 500}, {399, 500}, {600, 600} });
+            tMiddle = triangle(new float[][]{ {525, 500}, {475, 500}, {500, 450} });
+
+            r = new Rect(160, 350, 660, 750);
+            tFit = triangle(new float[][]{ {260, 1050}, {510, 1234}, {760, 1050} });
         }
 
         @Override
         protected void onDraw(Canvas canvas){
-            canvas.drawARGB(a(95), 100, 180, 199);
+            canvas.drawARGB(a(91), 100, 180, 199);
             p.setColor(Color.parseColor("#fecaca"));
             p.setStrokeWidth(10);
-            p.setTextSize(33);
 
-            canvas.drawText((
-                "W: " + getWidth() + "; H: " + getHeight() + "; // says, use getWidth instead of canvas.getWidth"
-            ), 10, 150, p);
+            canvas.drawPath(t, p);
+            canvas.drawPath(tReversed, p);
+            canvas.drawPath(tMiddle, p);
 
+            p.setColor(Color.WHITE);
+            r.offset(100, 300);
+            canvas.drawRect(r, p);
+            canvas.drawPath(tFit, p);
 
-            p.setStyle(Paint.Style.FILL);
-            r.offset(123, 0);
-            canvas.drawRect(r, p);
-            p.setStyle(Paint.Style.STROKE);
-            r.offset(256, 0);
-            canvas.drawRect(r, p);
-            p.setStyle(Paint.Style.FILL_AND_STROKE);
-            r.offset(234, 0);
-            canvas.drawRect(r, p);
         }
-
     }
-
-    class DrawThread extends Thread {
-        private boolean _running = false;
-        private SurfaceHolder _holder;
-
-        public DrawThread(SurfaceHolder sh){
-            this._holder = sh;
-        }
-
-        public void setRunning(boolean run){
-            this._running = run;
-        }
-
-        @Override
-        public void run(){
-            Canvas c;
-            while (_running)  {
-                c = null;
-                try {
-                    c = _holder.lockCanvas(null);
-                    if(c == null) continue;
-                    c.drawColor(Color.WHITE);
-                } catch (Exception ex){
-                    Logger.getLogger("DT").log(Level.INFO, "EX: " + ex.getMessage());
-                } finally {
-                    if(c != null) _holder.unlockCanvasAndPost(c);
-                }
-            }
-        }
-
-    }
-
 }
